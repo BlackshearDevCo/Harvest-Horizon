@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://6r57xgcgwt5w"]
+
+[ext_resource type="Script" path="res://Scripts/Plant.gd" id="1_5wn7c"]
+[ext_resource type="Texture2D" uid="uid://da88j7g363s17" path="res://Assests/tilesets/objects/Farming Plants.png" id="2_ic3rn"]
+
+[node name="Plant" type="Node2D"]
+script = ExtResource("1_5wn7c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("2_ic3rn")
+region_enabled = true
+region_rect = Rect2(0, 32, 16, 16)
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

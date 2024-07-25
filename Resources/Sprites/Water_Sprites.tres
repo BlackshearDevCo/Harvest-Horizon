@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://diyf7rqovibpn"]
+
+[ext_resource type="Texture2D" uid="uid://bt7vht68xptm8" path="res://Assests/water_frames/Water.png" id="1_4iee2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdnwr"]
+atlas = ExtResource("1_4iee2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqlrg"]
+atlas = ExtResource("1_4iee2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfdor"]
+atlas = ExtResource("1_4iee2")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tsct"]
+atlas = ExtResource("1_4iee2")
+region = Rect2(48, 0, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdnwr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqlrg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfdor")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tsct")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

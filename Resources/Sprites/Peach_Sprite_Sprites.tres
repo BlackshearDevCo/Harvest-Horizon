@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://c5d5xpmepjoeg"]
+
+[ext_resource type="Texture2D" uid="uid://dgbcbv8i0ep1f" path="res://Assests/tilesets/trees/tree_peach_sprites.png" id="1_48ft4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qliox"]
+atlas = ExtResource("1_48ft4")
+region = Rect2(0, 0, 48, 48)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qliox")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://b5ovhilvj5uaw"]
+
+[ext_resource type="Texture2D" uid="uid://5egn38ah6iuc" path="res://Assests/tilesets/trees/tree_orange_sprites.png" id="1_egxpd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyq0j"]
+atlas = ExtResource("1_egxpd")
+region = Rect2(0, 0, 48, 48)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gyq0j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

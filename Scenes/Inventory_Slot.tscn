@@ -1,0 +1,158 @@
+[gd_scene load_steps=8 format=3 uid="uid://itbx1yir3p4e"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory_Slot.gd" id="1_81otb"]
+[ext_resource type="Texture2D" uid="uid://dehoi0q7i58f4" path="res://Assests/tilesets/items/items-spritesheet.png" id="2_6hoip"]
+[ext_resource type="Texture2D" uid="uid://86v2qhkluqib" path="res://Assests/ui/Sprite sheet for Basic Pack.png" id="2_8g45l"]
+[ext_resource type="FontFile" uid="uid://dqu2jgryoxjvy" path="res://Assests/pixelFont-7-8x14-sproutLands.ttf" id="4_htmse"]
+[ext_resource type="Texture2D" uid="uid://c3t5f8tniv3uw" path="res://Assests/ui/UI Big Play Button.png" id="5_xkmk2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uimj6"]
+
+[sub_resource type="Theme" id="Theme_emqy8"]
+default_font = ExtResource("4_htmse")
+
+[node name="Inventory_Slot" type="Control"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -1760.0
+offset_bottom = -920.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_81otb")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Frame" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 150.0
+texture = ExtResource("2_8g45l")
+region_rect = Rect2(59, 59, 26, 26)
+
+[node name="Control" type="Control" parent="Frame"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ItemIcon" type="Sprite2D" parent="Frame/Control"]
+position = Vector2(75, 75)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("2_6hoip")
+region_enabled = true
+region_rect = Rect2(0, 32, 16, 16)
+
+[node name="ItemQuantity" type="Label" parent="Frame/Control"]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 85.0
+offset_right = 135.0
+offset_bottom = 124.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_htmse")
+theme_override_font_sizes/font_size = 40
+text = "1"
+
+[node name="ItemButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_uimj6")
+
+[node name="DetailsPanel" type="NinePatchRect" parent="."]
+visible = false
+layout_mode = 0
+offset_top = -85.0
+offset_right = 240.0
+offset_bottom = -5.0
+texture = ExtResource("2_8g45l")
+region_rect = Rect2(153, 9, 30, 30)
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+
+[node name="Item Name" type="Label" parent="DetailsPanel"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 11.0
+offset_right = 102.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(0.207843, 0.215686, 0.219608, 1)
+theme_override_fonts/font = ExtResource("4_htmse")
+theme_override_font_sizes/font_size = 30
+text = "Name"
+
+[node name="Item Type" type="Label" parent="DetailsPanel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 15.0
+offset_top = 4.0
+offset_right = 75.0
+offset_bottom = 34.0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.329412, 0.34902, 0.34902, 1)
+theme_override_fonts/font = ExtResource("4_htmse")
+theme_override_font_sizes/font_size = 26
+text = "Type
+"
+
+[node name="UsagePanel" type="NinePatchRect" parent="."]
+visible = false
+clip_contents = true
+layout_mode = 0
+offset_top = -85.0
+offset_right = 240.0
+offset_bottom = -5.0
+texture = ExtResource("2_8g45l")
+region_rect = Rect2(153, 9, 30, 30)
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UsagePanel"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -25.0
+offset_right = -20.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_xkmk2")
+region_rect = Rect2(99, 4, 90, 25)
+
+[node name="DropButton" type="Button" parent="UsagePanel/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_emqy8")
+theme_override_fonts/font = ExtResource("4_htmse")
+theme_override_font_sizes/font_size = 40
+text = "Drop"
+
+[connection signal="mouse_entered" from="ItemButton" to="." method="_on_item_button_mouse_entered"]
+[connection signal="mouse_exited" from="ItemButton" to="." method="_on_item_button_mouse_exited"]
+[connection signal="pressed" from="ItemButton" to="." method="_on_item_button_pressed"]

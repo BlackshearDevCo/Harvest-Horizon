@@ -1,11 +1,5 @@
 extends Node
 
-enum Tools {
-	HOE,
-	AXE,
-	SHOVEL,
-}
-
 enum FacingDirection {
 	LEFT,
 	RIGHT,
@@ -13,183 +7,170 @@ enum FacingDirection {
 	DOWN,
 }
 
-enum ItemTypes {
-	SEED,
-	CROP,
-}
-
-enum ItemNames {
-	CAULIFLOWER,
-	#CORN,
-	CARROT,
-	TOMATO,
-	EGGPLANT,
-	TULIP,
-	LETTUCE,
-	TURNIP,
-	WHEAT,
-	PUMPKIN,
-	DAHLIA,
-	BEETROOT,
-	STARFRUIT,
-	CUCUMBER,
-}
-
-var item_type_map = {
-	ItemTypes.SEED: "seed",
-	ItemTypes.CROP: "crop",
-}
-
-var item_name_map = {
-	ItemNames.CAULIFLOWER: "cauliflower",
-	#ItemNames.CORN: "corn",
-	ItemNames.CARROT: "carrot",
-	ItemNames.TOMATO: "tomato",
-	ItemNames.EGGPLANT: "eggplant",
-	ItemNames.TULIP: "tulip",
-	ItemNames.LETTUCE: "lettuce",
-	ItemNames.TURNIP: "turnip",
-	ItemNames.WHEAT: "wheat",
-	ItemNames.PUMPKIN: "pumpkin",
-	ItemNames.DAHLIA: "dahlia",
-	ItemNames.BEETROOT: "beetroot",
-	ItemNames.STARFRUIT: "starfruit",
-	ItemNames.CUCUMBER: "cucumber",
-}
-
-var item_reigons = {
-	ItemNames.CAULIFLOWER: {
-		ItemTypes.SEED: Rect2(0, 48, 16, 16),
-		ItemTypes.CROP: Rect2(16, 48, 16, 16),
-	},
-	#ItemNames.CORN: {
-		#ItemTypes.SEED: Rect2(0, 16, 16, 16),
-		#ItemTypes.CROP: Rect2(16, 16, 16, 16),
-	#},
-	ItemNames.CARROT: {
-		ItemTypes.SEED: Rect2(0, 32, 16, 16),
-		ItemTypes.CROP: Rect2(16, 32, 16, 16),
-	},
-	ItemNames.TOMATO: {
-		ItemTypes.SEED: Rect2(0, 64, 16, 16),
-		ItemTypes.CROP: Rect2(16, 64, 16, 16),
-	},
-	ItemNames.EGGPLANT: {
-		ItemTypes.SEED: Rect2(0, 80, 16, 16),
-		ItemTypes.CROP: Rect2(16, 80, 16, 16),
-	},
-	ItemNames.TULIP: {
-		ItemTypes.SEED: Rect2(0, 96, 16, 16),
-		ItemTypes.CROP: Rect2(16, 96, 16, 16),
-	},
-	ItemNames.LETTUCE: {
-		ItemTypes.SEED: Rect2(0, 112, 16, 16),
-		ItemTypes.CROP: Rect2(16, 112, 16, 16),
-	},
-	ItemNames.TURNIP: {
-		ItemTypes.SEED: Rect2(0, 160, 16, 16),
-		ItemTypes.CROP: Rect2(16, 160, 16, 16),
-	},
-	ItemNames.WHEAT: {
-		ItemTypes.SEED: Rect2(0, 128, 16, 16),
-		ItemTypes.CROP: Rect2(16, 128, 16, 16),
-	},
-	ItemNames.PUMPKIN: {
-		ItemTypes.SEED: Rect2(0, 144, 16, 16),
-		ItemTypes.CROP: Rect2(16, 144, 16, 16),
-	},
-	ItemNames.DAHLIA: {
-		ItemTypes.SEED: Rect2(0, 176, 16, 16),
-		ItemTypes.CROP: Rect2(16, 176, 16, 16),
-	},
-	ItemNames.BEETROOT: {
-		ItemTypes.SEED: Rect2(0, 192, 16, 16),
-		ItemTypes.CROP: Rect2(16, 192, 16, 16),
-	},
-	ItemNames.STARFRUIT: {
-		ItemTypes.SEED: Rect2(0, 208, 16, 16),
-		ItemTypes.CROP: Rect2(16, 208, 16, 16),
-	},
-	ItemNames.CUCUMBER: {
-		ItemTypes.SEED: Rect2(0, 224, 16, 16),
-		ItemTypes.CROP: Rect2(16, 224, 16, 16),
-	},
-}
-
 var crop_tiles_atlas_coords_map = {
-	"cauliflower": [Vector2i(0, 3), Vector2i(1, 3), Vector2i(2, 3), Vector2i(3, 3)],
-	#"corn": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1), Vector2i(4, 1)],
-	"carrot": [Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2)],
-	"tomato": [Vector2i(0, 4), Vector2i(1, 4), Vector2i(2, 4), Vector2i(3, 4)],
-	"eggplant": [Vector2i(0, 5), Vector2i(1, 5), Vector2i(2, 5), Vector2i(3, 5)],
-	"tulip": [Vector2i(0, 6), Vector2i(1, 6), Vector2i(2, 6), Vector2i(3, 6)],
-	"lettuce": [Vector2i(0, 7), Vector2i(1, 7), Vector2i(2, 7), Vector2i(3, 7)],
-	"turnip": [Vector2i(0, 10), Vector2i(1, 10), Vector2i(2, 10), Vector2i(3, 10)],
-	"wheat": [Vector2i(0, 8), Vector2i(1, 8), Vector2i(2, 8), Vector2i(3, 8)],
-	"pumpkin": [Vector2i(0, 9), Vector2i(1, 9), Vector2i(2, 9), Vector2i(3, 9)],
-	"dahlia": [Vector2i(0, 11), Vector2i(1, 11), Vector2i(2, 11), Vector2i(3, 11)],
-	"beetroot": [Vector2i(0, 12), Vector2i(1, 12), Vector2i(2, 12), Vector2i(3, 12)],
-	"starfruit": [Vector2i(0, 13), Vector2i(1, 13), Vector2i(2, 13), Vector2i(3, 13)],
-	"cucumber": [Vector2i(0, 14), Vector2i(1, 14), Vector2i(2, 14), Vector2i(3, 14)],
+	Item.ItemName["CAULIFLOWER"]: [Vector2i(0, 3), Vector2i(1, 3), Vector2i(2, 3), Vector2i(3, 3)],
+	Item.ItemName["CARROT"]: [Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2)],
+	Item.ItemName["TOMATO"]: [Vector2i(0, 4), Vector2i(1, 4), Vector2i(2, 4), Vector2i(3, 4)],
+	Item.ItemName["EGGPLANT"]: [Vector2i(0, 5), Vector2i(1, 5), Vector2i(2, 5), Vector2i(3, 5)],
+	Item.ItemName["TULIP"]: [Vector2i(0, 6), Vector2i(1, 6), Vector2i(2, 6), Vector2i(3, 6)],
+	Item.ItemName["LETTUCE"]: [Vector2i(0, 7), Vector2i(1, 7), Vector2i(2, 7), Vector2i(3, 7)],
+	Item.ItemName["TURNIP"]: [Vector2i(0, 10), Vector2i(1, 10), Vector2i(2, 10), Vector2i(3, 10)],
+	Item.ItemName["WHEAT"]: [Vector2i(0, 8), Vector2i(1, 8), Vector2i(2, 8), Vector2i(3, 8)],
+	Item.ItemName["PUMPKIN"]: [Vector2i(0, 9), Vector2i(1, 9), Vector2i(2, 9), Vector2i(3, 9)],
+	Item.ItemName["DAHLIA"]: [Vector2i(0, 11), Vector2i(1, 11), Vector2i(2, 11), Vector2i(3, 11)],
+	Item.ItemName["BEETROOT"]: [Vector2i(0, 12), Vector2i(1, 12), Vector2i(2, 12), Vector2i(3, 12)],
+	Item.ItemName["STARFRUIT"]: [Vector2i(0, 13), Vector2i(1, 13), Vector2i(2, 13), Vector2i(3, 13)],
+	Item.ItemName["CUCUMBER"]: [Vector2i(0, 14), Vector2i(1, 14), Vector2i(2, 14), Vector2i(3, 14)],
 }
 
 const SOIL_TILES_SOURCE_ID = 15
 const CROP_TILES_SOURCE_ID = 23
 const GRASS_TILES_SOURED_ID = 11
-const GROUND_LAYER = 1
+const SOIL_TERRAIN = 17
+const GROUND_LAYER = 0
+const HIGH_ELEVATION_LAYER = 1
 const SOIL_LAYER = 2
 const CROP_LAYER = 3
-const SOIL_TERRAIN = 17
+const PATH_LAYER = 4
+const FLORA_LAYER = 4
+const DECORATION_LAYER = 6
 
-var current_tool: Tools = Tools.HOE
+var current_tool = Item.ItemName.HOE
+var tools: Array = [Item.ItemName.HOE, Item.ItemName.AXE, Item.ItemName.WATERING_CAN]
+var tool_index = 0
 var last_direction = FacingDirection.DOWN
 var soil_tiles = []
 var crop_tiles: Dictionary = {}
 var tile_map_node: Node = null
 var player_node: Node = null
 
+signal tool_index_updated
+signal hotbar_index_updated
 signal inventory_updated
 signal inventory_index_updated
 signal inventory_open_updated
+signal wallet_updated
 
 @onready var inventory_slot_scene = preload("res://Scenes/Inventory_Slot.tscn")
 
-var inventory = {}
+var hotbar = {}
+var hotbar_index = 0;
+var inventory: Dictionary = {}
 var inventory_index = 0;
 var inventory_open = false
+
+var wallet := 25
+
+var in_shop_range = false
+var shop_open = false
+
+var player_ground_level = 0
+
+const MAX_ITEM_STACK = 10
 
 func _ready():
 	# Instantiate inventory with 27 empty slots
 	for i in range(27):
 		inventory[i] = null
+	# Instantiate hotbar with 5 empty slots
+	for i in range(7):
+		hotbar[i] = null
+		
+func get_current_tool():
+	return tools[tool_index]
 	
-func add_item(item):
+func add_item(item, to_hotbar = false):
+	var added_to_hotbar = false
+	
+	# Add to hotbar
+	if to_hotbar:
+		added_to_hotbar = add_item_to_hotbar(item)
+		inventory_updated.emit()
+
+	# Add to inventory
+	if not added_to_hotbar:
+		for i in range(inventory.size()):
+			if inventory[i] != null and item["item"]["type"] == inventory[i]["item"]["type"] and item["item"]["item_name"] == inventory[i]["item"]["item_name"]:
+				inventory[i]["quantity"] += item["quantity"]
+				inventory_updated.emit()
+				update_inventory_index(inventory_index)
+				return true
+			elif inventory[i] == null:
+				inventory[i] = item
+				inventory_updated.emit()
+				update_inventory_index(inventory_index)
+				return true
+		return false
+
+func decrement_item(item):
 	for i in range(inventory.size()):
-		if inventory[i] != null and item["type"] == inventory[i]["type"] and item["name"] == inventory[i]["name"]:
-			inventory[i]["quantity"] += item["quantity"]
+		if inventory[i] != null and item["item"]["type"] == inventory[i]["item"]["type"] and item["item"]["item_name"] == inventory[i]["item"]["item_name"]:
+			inventory[i]["quantity"] -= 1
 			inventory_updated.emit()
-			update_inventory_index(inventory_index)
 			return true
-		elif inventory[i] == null:
-			inventory[i] = item
+
+func remove_item(item):
+	for i in range(inventory.size()):
+		if inventory[i] == item:
+			inventory[i] = null
+	inventory_updated.emit()
+	
+func add_item_to_hotbar(item):
+	for i in range(hotbar.size()):
+		if hotbar[i] == null:
+			hotbar[i] = item
 			inventory_updated.emit()
-			update_inventory_index(inventory_index)
 			return true
 	return false
-			
 	
-func remove_item():
-	inventory_updated.emit()	
-	pass
+func remove_item_from_hotbar(item):
+	for i in range(hotbar.size()):
+		var hotbar_item = hotbar[i]
+		if hotbar_item != null and item["type"] == hotbar_item["type"] and item["name"] == hotbar_item["name"]:
+			if hotbar_item["quantity"] <= 0:
+				hotbar[i] = null
+			inventory_updated.emit()
+			return true
+	return false
 	
+func unassign_hotbar_item(item):
+	for i in range(hotbar.size()):
+		var hotbar_item = hotbar[i]
+		if hotbar_item != null and item == hotbar_item:
+			hotbar[i] = null
+			inventory_updated.emit()
+			return true
+	return false
+
+func is_item_assigned_to_hotbar(item):
+	for hotbar_item in hotbar.values():
+		if hotbar_item == item:
+			return true
+	return false
+
+func update_tool_index(index):
+	tool_index = index
+	tool_index_updated.emit()
+	
+func update_hotbar_index(index):
+	hotbar_index = index
+	hotbar_index_updated.emit()
 	
 func update_inventory_index(index):
 	inventory_index = index
 	inventory_index_updated.emit()
+	
+func get_inventory_index_from_node(slot_node: Node):
+	var index = slot_node.get_index()
+	return index
 
 func toggle_inventory_open():
 	inventory_open = !inventory_open
 	inventory_open_updated.emit()
+	
+func set_wallet(amount: int):
+	wallet = amount
+	wallet_updated.emit()
 
 func set_tile_map(node: Node):
 	tile_map_node = node

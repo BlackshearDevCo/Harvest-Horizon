@@ -1,0 +1,2211 @@
+[gd_scene load_steps=6 format=3 uid="uid://ckyp06w4ehewk"]
+
+[ext_resource type="Script" path="res://Scripts/ShopUI.gd" id="1_ov7kq"]
+[ext_resource type="Texture2D" uid="uid://86v2qhkluqib" path="res://Assests/ui/Sprite sheet for Basic Pack.png" id="2_6ywn5"]
+[ext_resource type="FontFile" uid="uid://dqu2jgryoxjvy" path="res://Assests/pixelFont-7-8x14-sproutLands.ttf" id="2_ys3v8"]
+[ext_resource type="Texture2D" uid="uid://dehoi0q7i58f4" path="res://Assests/tilesets/items/items-spritesheet.png" id="4_plf18"]
+[ext_resource type="PackedScene" uid="uid://pwp8367wvgeh" path="res://Scenes/ShopUIItem.tscn" id="4_y8kdf"]
+
+[node name="ShopUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ov7kq")
+
+[node name="ShopContainer" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -778.5
+offset_top = -472.0
+offset_right = 778.5
+offset_bottom = 472.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(201, 9, 30, 30)
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+
+[node name="Title" type="NinePatchRect" parent="ShopContainer"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -262.5
+offset_top = 50.0
+offset_right = 262.5
+offset_bottom = 155.0
+grow_horizontal = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(259, 180, 90, 25)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Label" type="Label" parent="ShopContainer/Title"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 60
+text = "Shop"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShopItemsContainer" type="Control" parent="ShopContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -695.5
+offset_top = -258.0
+offset_right = 696.5
+offset_bottom = 383.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Buy" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer"]
+layout_mode = 2
+offset_right = 634.0
+offset_bottom = 641.0
+grow_vertical = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(59, 59, 26, 26)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="BuyContainer" type="VBoxContainer" parent="ShopContainer/ShopItemsContainer/Buy"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -285.0
+offset_top = -284.5
+offset_right = 285.0
+offset_bottom = 284.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 40
+text = "Buy"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="BuyGrid" type="GridContainer" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 6
+
+[node name="Carrot" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid" instance=ExtResource("4_y8kdf")]
+visible = false
+layout_mode = 2
+
+[node name="Wheat" type="VBoxContainer" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid"]
+visible = false
+layout_mode = 2
+
+[node name="BuyWheat" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Wheat"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(59, 59, 26, 26)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Wheat/BuyWheat"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.5
+offset_right = 20.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_plf18")
+region_rect = Rect2(1, 128, 14, 15)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Wheat/BuyWheat"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -31.0
+offset_right = -5.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuyWheatSeedsButton" type="Button" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Wheat/BuyWheat"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Buy 10 Wheat seeds"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Wheat"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Wheat/HBoxContainer"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(628, 83, 7, 9)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Wheat/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "5"
+
+[node name="Lettuce" type="VBoxContainer" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid"]
+visible = false
+layout_mode = 2
+
+[node name="BuyLettuce" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Lettuce"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(59, 59, 26, 26)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Lettuce/BuyLettuce"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.5
+offset_right = 20.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_plf18")
+region_rect = Rect2(1, 112, 14, 15)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Lettuce/BuyLettuce"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -31.0
+offset_right = -5.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuyLettuceSeedsButton" type="Button" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Lettuce/BuyLettuce"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Buy 10 Lettuce seeds"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Lettuce"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Lettuce/HBoxContainer"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(628, 83, 7, 9)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Lettuce/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "5"
+
+[node name="Cauliflower" type="VBoxContainer" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid"]
+visible = false
+layout_mode = 2
+
+[node name="BuyCauliflower" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Cauliflower"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(59, 59, 26, 26)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Cauliflower/BuyCauliflower"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.5
+offset_right = 20.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_plf18")
+region_rect = Rect2(1, 48, 14, 15)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Cauliflower/BuyCauliflower"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -31.0
+offset_right = -5.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuyCauliflowerSeedsButton" type="Button" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Cauliflower/BuyCauliflower"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Buy 10 Cauliflower seeds"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Cauliflower"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Cauliflower/HBoxContainer"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(628, 83, 7, 9)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Cauliflower/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "10"
+
+[node name="Cucumber" type="VBoxContainer" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid"]
+visible = false
+layout_mode = 2
+
+[node name="BuyCucumber" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Cucumber"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(59, 59, 26, 26)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Cucumber/BuyCucumber"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.5
+offset_right = 20.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_plf18")
+region_rect = Rect2(1, 224, 14, 15)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Cucumber/BuyCucumber"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -31.0
+offset_right = -5.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuyCucumberSeedsButton" type="Button" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Cucumber/BuyCucumber"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Buy 10 Cucumber seeds"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Cucumber"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Cucumber/HBoxContainer"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(628, 83, 7, 9)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Cucumber/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "10"
+
+[node name="Tomato" type="VBoxContainer" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid"]
+visible = false
+layout_mode = 2
+
+[node name="BuyTomato" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Tomato"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(59, 59, 26, 26)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Tomato/BuyTomato"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.5
+offset_right = 20.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_plf18")
+region_rect = Rect2(1, 64, 14, 15)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Tomato/BuyTomato"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -31.0
+offset_right = -5.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuyTomatoSeedsButton" type="Button" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Tomato/BuyTomato"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Buy 10 Tomato seeds"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Tomato"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Tomato/HBoxContainer"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(628, 83, 7, 9)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Tomato/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "10"
+
+[node name="Eggplant" type="VBoxContainer" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid"]
+visible = false
+layout_mode = 2
+
+[node name="BuyEggplant" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Eggplant"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(59, 59, 26, 26)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Eggplant/BuyEggplant"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.5
+offset_right = 20.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_plf18")
+region_rect = Rect2(1, 80, 14, 15)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Eggplant/BuyEggplant"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -31.0
+offset_right = -5.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuyEggplantSeedsButton" type="Button" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Eggplant/BuyEggplant"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Buy 10 Eggplant seeds"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Eggplant"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Eggplant/HBoxContainer"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(628, 83, 7, 9)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Eggplant/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "15"
+
+[node name="Turnip" type="VBoxContainer" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid"]
+visible = false
+layout_mode = 2
+
+[node name="BuyTurnip" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Turnip"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(59, 59, 26, 26)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Turnip/BuyTurnip"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.5
+offset_right = 20.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_plf18")
+region_rect = Rect2(1, 160, 14, 15)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Turnip/BuyTurnip"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -31.0
+offset_right = -5.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuyTurnipSeedsButton" type="Button" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Turnip/BuyTurnip"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Buy 10 Turnip seeds"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Turnip"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Turnip/HBoxContainer"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(628, 83, 7, 9)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Turnip/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "15"
+
+[node name="Beetroot" type="VBoxContainer" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid"]
+visible = false
+layout_mode = 2
+
+[node name="BuyBeetroot" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Beetroot"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(59, 59, 26, 26)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Beetroot/BuyBeetroot"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.5
+offset_right = 20.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_plf18")
+region_rect = Rect2(1, 192, 14, 15)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Beetroot/BuyBeetroot"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -31.0
+offset_right = -5.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuyBeetrootSeedsButton" type="Button" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Beetroot/BuyBeetroot"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Buy 10 Beetroot seeds"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Beetroot"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Beetroot/HBoxContainer"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(628, 83, 7, 9)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Beetroot/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "15"
+
+[node name="Pumpkin" type="VBoxContainer" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid"]
+visible = false
+layout_mode = 2
+
+[node name="BuyPumpkin" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Pumpkin"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(59, 59, 26, 26)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Pumpkin/BuyPumpkin"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.5
+offset_right = 20.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_plf18")
+region_rect = Rect2(1, 144, 14, 15)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Pumpkin/BuyPumpkin"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -31.0
+offset_right = -5.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuyPumpkinSeedsButton" type="Button" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Pumpkin/BuyPumpkin"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Buy 10 Pumpkin seeds"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Pumpkin"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Pumpkin/HBoxContainer"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(628, 83, 7, 9)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Pumpkin/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "25"
+
+[node name="Tulip" type="VBoxContainer" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid"]
+visible = false
+layout_mode = 2
+
+[node name="BuyTulip" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Tulip"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(59, 59, 26, 26)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Tulip/BuyTulip"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.5
+offset_right = 20.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_plf18")
+region_rect = Rect2(1, 96, 14, 15)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Tulip/BuyTulip"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -31.0
+offset_right = -5.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuyTulipSeedsButton" type="Button" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Tulip/BuyTulip"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Buy 10 Tulip seeds"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Tulip"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Tulip/HBoxContainer"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(628, 83, 7, 9)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Tulip/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "25"
+
+[node name="Starfruit" type="VBoxContainer" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid"]
+visible = false
+layout_mode = 2
+
+[node name="BuyStarfruit" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Starfruit"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(59, 59, 26, 26)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Starfruit/BuyStarfruit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.5
+offset_right = 20.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_plf18")
+region_rect = Rect2(1, 208, 14, 15)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Starfruit/BuyStarfruit"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -31.0
+offset_right = -5.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuyStarfruitSeedsButton" type="Button" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Starfruit/BuyStarfruit"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Buy 10 Starfruit seeds"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Starfruit"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Starfruit/HBoxContainer"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(628, 83, 7, 9)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Starfruit/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "50"
+
+[node name="Dahlia" type="VBoxContainer" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid"]
+visible = false
+layout_mode = 2
+
+[node name="BuyDahlia" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Dahlia"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(59, 59, 26, 26)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Dahlia/BuyDahlia"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.5
+offset_right = 20.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_plf18")
+region_rect = Rect2(1, 176, 14, 14)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Dahlia/BuyDahlia"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -31.0
+offset_right = -5.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuyDahliaSeedsButton" type="Button" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Dahlia/BuyDahlia"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Buy 10 Dahlia seeds"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Dahlia"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Dahlia/HBoxContainer"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(628, 83, 7, 9)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Dahlia/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "50"
+
+[node name="Sell" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -634.0
+offset_top = -320.5
+offset_bottom = 320.5
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(59, 59, 26, 26)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="SellContainer" type="VBoxContainer" parent="ShopContainer/ShopItemsContainer/Sell"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -285.0
+offset_top = -284.5
+offset_right = 285.0
+offset_bottom = 284.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 40
+text = "Sell"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="SellGrid" type="GridContainer" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 6
+
+[node name="Carrot" type="VBoxContainer" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid"]
+visible = false
+layout_mode = 2
+
+[node name="BuyCarrot" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Carrot"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(59, 59, 26, 26)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Icon" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Carrot/BuyCarrot"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.5
+offset_right = 20.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_plf18")
+region_rect = Rect2(16, 32, 16, 16)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Carrot/BuyCarrot"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -31.0
+offset_right = -5.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SellCarrotSeedsButton" type="Button" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Carrot/BuyCarrot"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Buy 10 Carrot seeds"
+
+[node name="Control" type="Control" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Carrot/BuyCarrot"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Carrot"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Coin" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Carrot/HBoxContainer"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(628, 83, 7, 9)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Carrot/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "1"
+
+[node name="Wheat" type="VBoxContainer" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid"]
+visible = false
+layout_mode = 2
+
+[node name="BuyWheat" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Wheat"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(59, 59, 26, 26)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Icon" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Wheat/BuyWheat"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.5
+offset_right = 20.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_plf18")
+region_rect = Rect2(16, 128, 16, 16)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Wheat/BuyWheat"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -31.0
+offset_right = -5.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SellWheatSeedsButton" type="Button" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Wheat/BuyWheat"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Buy 10 Wheat seeds"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Wheat"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Wheat/HBoxContainer"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(628, 83, 7, 9)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Wheat/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "1"
+
+[node name="Lettuce" type="VBoxContainer" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid"]
+visible = false
+layout_mode = 2
+
+[node name="BuyLettuce" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Lettuce"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(59, 59, 26, 26)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Icon" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Lettuce/BuyLettuce"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.5
+offset_right = 20.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_plf18")
+region_rect = Rect2(16, 112, 16, 16)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Lettuce/BuyLettuce"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -31.0
+offset_right = -5.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SellLettuceSeedsButton" type="Button" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Lettuce/BuyLettuce"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Buy 10 Lettuce seeds"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Lettuce"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Lettuce/HBoxContainer"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(628, 83, 7, 9)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Lettuce/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "1"
+
+[node name="Cauliflower" type="VBoxContainer" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid"]
+visible = false
+layout_mode = 2
+
+[node name="BuyCauliflower" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Cauliflower"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(59, 59, 26, 26)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Icon" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Cauliflower/BuyCauliflower"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.5
+offset_right = 20.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_plf18")
+region_rect = Rect2(16, 48, 16, 16)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Cauliflower/BuyCauliflower"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -31.0
+offset_right = -5.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SellCauliflowerSeedsButton" type="Button" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Cauliflower/BuyCauliflower"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Buy 10 Cauliflower seeds"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Cauliflower"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Cauliflower/HBoxContainer"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(628, 83, 7, 9)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Cauliflower/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "3"
+
+[node name="Cucumber" type="VBoxContainer" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid"]
+visible = false
+layout_mode = 2
+
+[node name="BuyCucumber" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Cucumber"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(59, 59, 26, 26)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Icon" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Cucumber/BuyCucumber"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.5
+offset_right = 20.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_plf18")
+region_rect = Rect2(16, 224, 16, 16)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Cucumber/BuyCucumber"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -31.0
+offset_right = -5.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SellCucumberSeedsButton" type="Button" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Cucumber/BuyCucumber"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Buy 10 Cucumber seeds"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Cucumber"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Cucumber/HBoxContainer"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(628, 83, 7, 9)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Cucumber/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "3"
+
+[node name="Tomato" type="VBoxContainer" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid"]
+visible = false
+layout_mode = 2
+
+[node name="BuyTomato" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Tomato"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(59, 59, 26, 26)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Icon" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Tomato/BuyTomato"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.5
+offset_right = 20.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_plf18")
+region_rect = Rect2(16, 64, 16, 16)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Tomato/BuyTomato"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -31.0
+offset_right = -5.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SellTomatoSeedsButton" type="Button" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Tomato/BuyTomato"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Buy 10 Tomato seeds"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Tomato"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Tomato/HBoxContainer"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(628, 83, 7, 9)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Tomato/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "3"
+
+[node name="Eggplant" type="VBoxContainer" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid"]
+visible = false
+layout_mode = 2
+
+[node name="BuyEggplant" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Eggplant"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(59, 59, 26, 26)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Icon" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Eggplant/BuyEggplant"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.5
+offset_right = 20.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_plf18")
+region_rect = Rect2(16, 80, 16, 16)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Eggplant/BuyEggplant"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -31.0
+offset_right = -5.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SellEggplantSeedsButton" type="Button" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Eggplant/BuyEggplant"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Buy 10 Eggplant seeds"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Eggplant"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Eggplant/HBoxContainer"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(628, 83, 7, 9)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Eggplant/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "5"
+
+[node name="Turnip" type="VBoxContainer" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid"]
+visible = false
+layout_mode = 2
+
+[node name="BuyTurnip" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Turnip"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(59, 59, 26, 26)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Icon" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Turnip/BuyTurnip"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.5
+offset_right = 20.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_plf18")
+region_rect = Rect2(16, 160, 16, 16)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Turnip/BuyTurnip"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -31.0
+offset_right = -5.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SellTurnipSeedsButton" type="Button" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Turnip/BuyTurnip"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Buy 10 Turnip seeds"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Turnip"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Turnip/HBoxContainer"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(628, 83, 7, 9)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Turnip/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "5"
+
+[node name="Beetroot" type="VBoxContainer" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid"]
+visible = false
+layout_mode = 2
+
+[node name="BuyBeetroot" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Beetroot"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(59, 59, 26, 26)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Icon" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Beetroot/BuyBeetroot"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.5
+offset_right = 20.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_plf18")
+region_rect = Rect2(16, 192, 16, 16)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Beetroot/BuyBeetroot"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -31.0
+offset_right = -5.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SellBeetrootSeedsButton" type="Button" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Beetroot/BuyBeetroot"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Buy 10 Beetroot seeds"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Beetroot"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Beetroot/HBoxContainer"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(628, 83, 7, 9)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Beetroot/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "5"
+
+[node name="Pumpkin" type="VBoxContainer" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid"]
+visible = false
+layout_mode = 2
+
+[node name="BuyPumpkin" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Pumpkin"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(59, 59, 26, 26)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Icon" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Pumpkin/BuyPumpkin"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.5
+offset_right = 20.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_plf18")
+region_rect = Rect2(16, 144, 16, 16)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Pumpkin/BuyPumpkin"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -31.0
+offset_right = -5.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SellPumpkinSeedsButton" type="Button" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Pumpkin/BuyPumpkin"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Buy 10 Pumpkin seeds"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Pumpkin"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Pumpkin/HBoxContainer"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(628, 83, 7, 9)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Pumpkin/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "10"
+
+[node name="Tulip" type="VBoxContainer" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid"]
+visible = false
+layout_mode = 2
+
+[node name="BuyTulip" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Tulip"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(59, 59, 26, 26)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Icon" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Tulip/BuyTulip"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.5
+offset_right = 20.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_plf18")
+region_rect = Rect2(16, 96, 16, 16)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Tulip/BuyTulip"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -31.0
+offset_right = -5.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SellTulipSeedsButton" type="Button" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Tulip/BuyTulip"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Buy 10 Tulip seeds"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Tulip"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Tulip/HBoxContainer"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(628, 83, 7, 9)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Tulip/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "10"
+
+[node name="Starfruit" type="VBoxContainer" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid"]
+visible = false
+layout_mode = 2
+
+[node name="BuyStarfruit" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Starfruit"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(59, 59, 26, 26)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Icon" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Starfruit/BuyStarfruit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.5
+offset_right = 20.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_plf18")
+region_rect = Rect2(16, 208, 16, 16)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Starfruit/BuyStarfruit"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -31.0
+offset_right = -5.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SellStarfruitSeedsButton" type="Button" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Starfruit/BuyStarfruit"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Buy 10 Starfruit seeds"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Starfruit"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Starfruit/HBoxContainer"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(628, 83, 7, 9)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Starfruit/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "25"
+
+[node name="Dahlia" type="VBoxContainer" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid"]
+visible = false
+layout_mode = 2
+
+[node name="BuyDahlia" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Dahlia"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(59, 59, 26, 26)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Icon" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Dahlia/BuyDahlia"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.5
+offset_right = 20.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_plf18")
+region_rect = Rect2(16, 176, 16, 16)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Dahlia/BuyDahlia"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -31.0
+offset_right = -5.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SellDahliaSeedsButton" type="Button" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Dahlia/BuyDahlia"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Buy 10 Dahlia seeds"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Dahlia"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Dahlia/HBoxContainer"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(628, 83, 7, 9)
+
+[node name="Label" type="Label" parent="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Dahlia/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 20
+text = "25"
+
+[node name="Control" type="Control" parent="ShopContainer"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -243.0
+offset_top = 50.0
+offset_right = -50.0
+offset_bottom = 105.0
+grow_horizontal = 0
+
+[node name="Title" type="NinePatchRect" parent="ShopContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(259, 180, 90, 25)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopContainer/Control/Title"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -13.5
+offset_right = 68.0
+offset_bottom = 13.5
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Coin" type="NinePatchRect" parent="ShopContainer/Control/Title/HBoxContainer"]
+custom_minimum_size = Vector2(21, 27)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_6ywn5")
+region_rect = Rect2(628, 83, 7, 9)
+
+[node name="Wallet" type="Label" parent="ShopContainer/Control/Title/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ys3v8")
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Wheat/BuyWheat/BuyWheatSeedsButton" to="." method="_on_buy_wheat_seeds_button_pressed"]
+[connection signal="pressed" from="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Lettuce/BuyLettuce/BuyLettuceSeedsButton" to="." method="_on_buy_lettuce_seeds_button_pressed"]
+[connection signal="pressed" from="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Cauliflower/BuyCauliflower/BuyCauliflowerSeedsButton" to="." method="_on_buy_cauliflower_seeds_button_pressed"]
+[connection signal="pressed" from="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Cucumber/BuyCucumber/BuyCucumberSeedsButton" to="." method="_on_buy_cucumber_seeds_button_pressed"]
+[connection signal="pressed" from="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Tomato/BuyTomato/BuyTomatoSeedsButton" to="." method="_on_buy_tomato_seeds_button_pressed"]
+[connection signal="pressed" from="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Eggplant/BuyEggplant/BuyEggplantSeedsButton" to="." method="_on_buy_eggplant_seeds_button_pressed"]
+[connection signal="pressed" from="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Turnip/BuyTurnip/BuyTurnipSeedsButton" to="." method="_on_buy_turnip_seeds_button_pressed"]
+[connection signal="pressed" from="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Beetroot/BuyBeetroot/BuyBeetrootSeedsButton" to="." method="_on_buy_beetroot_seeds_button_pressed"]
+[connection signal="pressed" from="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Pumpkin/BuyPumpkin/BuyPumpkinSeedsButton" to="." method="_on_buy_pumpkin_seeds_button_pressed"]
+[connection signal="pressed" from="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Tulip/BuyTulip/BuyTulipSeedsButton" to="." method="_on_buy_tulip_seeds_button_pressed"]
+[connection signal="pressed" from="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Starfruit/BuyStarfruit/BuyStarfruitSeedsButton" to="." method="_on_buy_starfruit_seeds_button_pressed"]
+[connection signal="pressed" from="ShopContainer/ShopItemsContainer/Buy/BuyContainer/BuyGrid/Dahlia/BuyDahlia/BuyDahliaSeedsButton" to="." method="_on_buy_dahlia_seeds_button_pressed"]
+[connection signal="pressed" from="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Carrot/BuyCarrot/SellCarrotSeedsButton" to="." method="_on_sell_carrot_seeds_button_pressed"]
+[connection signal="pressed" from="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Wheat/BuyWheat/SellWheatSeedsButton" to="." method="_on_sell_wheat_seeds_button_pressed"]
+[connection signal="pressed" from="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Lettuce/BuyLettuce/SellLettuceSeedsButton" to="." method="_on_sell_lettuce_seeds_button_pressed"]
+[connection signal="pressed" from="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Cauliflower/BuyCauliflower/SellCauliflowerSeedsButton" to="." method="_on_sell_cauliflower_seeds_button_pressed"]
+[connection signal="pressed" from="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Cucumber/BuyCucumber/SellCucumberSeedsButton" to="." method="_on_sell_cucumber_seeds_button_pressed"]
+[connection signal="pressed" from="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Tomato/BuyTomato/SellTomatoSeedsButton" to="." method="_on_sell_tomato_seeds_button_pressed"]
+[connection signal="pressed" from="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Eggplant/BuyEggplant/SellEggplantSeedsButton" to="." method="_on_sell_eggplant_seeds_button_pressed"]
+[connection signal="pressed" from="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Turnip/BuyTurnip/SellTurnipSeedsButton" to="." method="_on_sell_turnip_seeds_button_pressed"]
+[connection signal="pressed" from="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Beetroot/BuyBeetroot/SellBeetrootSeedsButton" to="." method="_on_sell_beetroot_seeds_button_pressed"]
+[connection signal="pressed" from="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Pumpkin/BuyPumpkin/SellPumpkinSeedsButton" to="." method="_on_sell_pumpkin_seeds_button_pressed"]
+[connection signal="pressed" from="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Tulip/BuyTulip/SellTulipSeedsButton" to="." method="_on_sell_tulip_seeds_button_pressed"]
+[connection signal="pressed" from="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Starfruit/BuyStarfruit/SellStarfruitSeedsButton" to="." method="_on_sell_starfruit_seeds_button_pressed"]
+[connection signal="pressed" from="ShopContainer/ShopItemsContainer/Sell/SellContainer/SellGrid/Dahlia/BuyDahlia/SellDahliaSeedsButton" to="." method="_on_sell_dahlia_seeds_button_pressed"]

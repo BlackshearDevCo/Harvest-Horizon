@@ -1,0 +1,84 @@
+[gd_scene load_steps=5 format=3 uid="uid://pwp8367wvgeh"]
+
+[ext_resource type="Texture2D" uid="uid://86v2qhkluqib" path="res://Assests/ui/Sprite sheet for Basic Pack.png" id="1_akxqx"]
+[ext_resource type="Script" path="res://Scripts/ShopUIItem.gd" id="1_m6aek"]
+[ext_resource type="Texture2D" uid="uid://dehoi0q7i58f4" path="res://Assests/tilesets/items/items-spritesheet.png" id="2_un4bg"]
+[ext_resource type="FontFile" uid="uid://dqu2jgryoxjvy" path="res://Assests/pixelFont-7-8x14-sproutLands.ttf" id="3_yuqbn"]
+
+[node name="ShopUIItem" type="VBoxContainer"]
+script = ExtResource("1_m6aek")
+
+[node name="Item" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("1_akxqx")
+region_rect = Rect2(59, 59, 26, 26)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="ItemIcon" type="NinePatchRect" parent="Item"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.5
+offset_right = 20.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_un4bg")
+region_rect = Rect2(0, 32, 16, 16)
+
+[node name="Quantity" type="Label" parent="Item"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -31.0
+offset_right = -5.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_yuqbn")
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemButton" type="Button" parent="Item"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Buy 10 Carrot seeds"
+
+[node name="PriceContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Coin" type="NinePatchRect" parent="PriceContainer"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+texture = ExtResource("1_akxqx")
+region_rect = Rect2(628, 83, 7, 9)
+
+[node name="Price" type="Label" parent="PriceContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_yuqbn")
+theme_override_font_sizes/font_size = 20
+text = "5"
+
+[connection signal="pressed" from="Item/ItemButton" to="." method="_on_item_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=206 format=3 uid="uid://fnrup3jboeyb"]
+[gd_scene load_steps=204 format=3 uid="uid://fnrup3jboeyb"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_bl481"]
 [ext_resource type="Texture2D" uid="uid://ba8crqhm41o1k" path="res://Assests/tilesets/characters/Premium Charakter Spritesheet.png" id="1_wp50n"]
@@ -7,8 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://diavutstjjcdt" path="res://Scenes/Inventory_UI.tscn" id="4_df3u0"]
 [ext_resource type="Texture2D" uid="uid://b5n6i60ut0lcr" path="res://Assests/ui/Setting menu.png" id="4_jimwg"]
 [ext_resource type="PackedScene" uid="uid://bcy85gwf56koj" path="res://Scenes/Hotbar_UI.tscn" id="7_vs5xx"]
-[ext_resource type="AudioStream" uid="uid://dmp18lelvdc18" path="res://Assests/audio/footstep_grass_003.ogg" id="8_axgfs"]
-[ext_resource type="PackedScene" uid="uid://ckyp06w4ehewk" path="res://Scenes/ShopUI.tscn" id="9_fgdc0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u6u4c"]
 atlas = ExtResource("3_bs4b7")
@@ -1507,6 +1505,39 @@ shape = SubResource("CapsuleShape2D_jcjff")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
 
+[node name="InteractUI" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="InteractUI"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -350.0
+offset_top = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+color = Color(0.470588, 0.631373, 0.345098, 1)
+
+[node name="Label" type="Label" parent="InteractUI/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.5
+offset_top = -12.5
+offset_right = 152.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_72njr")
+theme_override_font_sizes/font_size = 20
+text = "Press F to pick up"
+horizontal_alignment = 1
+
 [node name="InventoryUI" type="CanvasLayer" parent="."]
 visible = false
 
@@ -1519,7 +1550,7 @@ anchor_bottom = 0.5
 offset_left = -868.5
 offset_top = -442.5
 offset_right = 868.5
-offset_bottom = 292.5
+offset_bottom = 442.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_jimwg")
@@ -1547,20 +1578,5 @@ layout_mode = 1
 [node name="HotbarUI" type="CanvasLayer" parent="."]
 
 [node name="HotbarUIScene" parent="HotbarUI" instance=ExtResource("7_vs5xx")]
-anchors_preset = 12
-anchor_top = 1.0
-offset_top = -248.0
-grow_vertical = 0
-
-[node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("8_axgfs")
-
-[node name="FootstepTimer" type="Timer" parent="."]
-wait_time = 0.4
-
-[node name="ShopUI" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="ShopUI" parent="ShopUI" instance=ExtResource("9_fgdc0")]
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

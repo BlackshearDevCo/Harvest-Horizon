@@ -22,7 +22,6 @@ var orange_tree_texture = preload(\"res://Resources/Sprites/Orange_Tree_Sprites.
 var tree_texture = preload(\"res://Resources/Sprites/Empty_Tree_Sprites.tres\")
 
 func _ready():
-	print(tree_type)
 	if tree_type == TreeTypes.PEAR:
 		animated_sprite_2d.sprite_frames = pear_tree_texture
 	elif tree_type == TreeTypes.PEACH:

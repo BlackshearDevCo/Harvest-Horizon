@@ -9,10 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://ctxemx0irf4mm" path="res://Assests/water_frames/Water_3.png" id="4_be80n"]
 [ext_resource type="Texture2D" uid="uid://dostyr1c8ewn2" path="res://Assests/water_frames/Water_4.png" id="5_mxued"]
 [ext_resource type="Script" path="res://Scripts/TileMap.gd" id="7_cm5ex"]
-[ext_resource type="PackedScene" uid="uid://hxx1rgnr46un" path="res://Scenes/Shop.tscn" id="8_nedh6"]
 [ext_resource type="PackedScene" uid="uid://di0h2780d8w40" path="res://Scenes/Inventory_Item.tscn" id="10_03lf6"]
+[ext_resource type="Texture2D" uid="uid://dehoi0q7i58f4" path="res://Assests/tilesets/items/items-spritesheet.png" id="11_5b163"]
 [ext_resource type="AudioStream" uid="uid://do81eu2oyp78l" path="res://Assests/audio/Retro Beat.ogg" id="12_sqey7"]
-[ext_resource type="AudioStream" uid="uid://c3xo2jhe27sgt" path="res://Assests/audio/cloth4.ogg" id="13_tqfpm"]
+[ext_resource type="AudioStream" uid="uid://btc1djm6kxpmi" path="res://Assests/audio/bookFlip3.ogg" id="13_dinmo"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_vd0d3"]
 frames = 4
@@ -30,10 +30,10 @@ y_sort_enabled = true
 script = ExtResource("1_x0r1n")
 
 [node name="Water" type="TextureRect" parent="."]
-offset_left = -684.0
-offset_top = -587.0
-offset_right = 2531.0
-offset_bottom = 1521.0
+offset_left = -672.0
+offset_top = -586.0
+offset_right = 2543.0
+offset_bottom = 1522.0
 texture = SubResource("AnimatedTexture_vd0d3")
 stretch_mode = 1
 
@@ -61,13 +61,10 @@ layer_8/name = "Rooftops"
 layer_8/tile_data = PackedInt32Array(1179659, 65572, 2, 1179660, 65572, 2, 1179661, 65572, 2, 1179662, 65572, 2, 1179663, 327716, 0, 1179664, 65572, 2, 1179658, 36, 2, 1179665, 131108, 2, 1245194, 36, 3, 1310730, 36, 4, 1245201, 131108, 3, 1310737, 131108, 4, 1245195, 65572, 3, 1245196, 65572, 3, 1245197, 65572, 3, 1245198, 65572, 3, 1245199, 65572, 3, 1245200, 65572, 3, 1310731, 65572, 4, 1310732, 65572, 4, 1310733, 65572, 4, 1310734, 65572, 4, 1310735, 65572, 4, 1310736, 65572, 4, 1114123, 65572, 1, 1114124, 65572, 1, 1114125, 65572, 1, 1114126, 65572, 1, 1114127, 65572, 1, 1114128, 65572, 1, 1048587, 65572, 1, 1048588, 65572, 1, 1048589, 65572, 1, 1048590, 65572, 1, 1048591, 65572, 1, 1048592, 65572, 1, 983051, 65572, 0, 983052, 65572, 0, 983053, 65572, 0, 983054, 65572, 0, 983055, 65572, 0, 983056, 65572, 0, 983057, 131108, 0, 983050, 36, 0, 1048586, 36, 1, 1114122, 36, 1, 1048593, 131108, 1, 1114129, 131108, 1)
 script = ExtResource("7_cm5ex")
 
-[node name="Shop" parent="." instance=ExtResource("8_nedh6")]
-position = Vector2(432, 351)
-
 [node name="Player" parent="." instance=ExtResource("2_ayvkv")]
 unique_name_in_owner = true
 top_level = true
-position = Vector2(441, 450)
+position = Vector2(415, 286)
 
 [node name="Trees" type="Node2D" parent="." groups=["CollisionObject"]]
 z_index = 1
@@ -173,51 +170,92 @@ position = Vector2(142, 378)
 tree_type = 0
 
 [node name="Items" type="Node2D" parent="."]
-visible = false
 
 [node name="Inventory_Item" parent="Items" instance=ExtResource("10_03lf6")]
 position = Vector2(335, 244)
+item_quantity = 10
+item_texture = ExtResource("11_5b163")
+item_texture_reigon = Rect2(0, 48, 16, 16)
 
 [node name="Inventory_Item2" parent="Items" instance=ExtResource("10_03lf6")]
 position = Vector2(471, 256)
+item_name = 1
+item_quantity = 10
+item_texture = ExtResource("11_5b163")
+item_texture_reigon = Rect2(0, 32, 16, 16)
 
 [node name="Inventory_Item3" parent="Items" instance=ExtResource("10_03lf6")]
 position = Vector2(358, 244)
+item_name = 2
+item_quantity = 10
+item_texture = ExtResource("11_5b163")
+item_texture_reigon = Rect2(0, 64, 16, 16)
 
 [node name="Inventory_Item4" parent="Items" instance=ExtResource("10_03lf6")]
 position = Vector2(381, 244)
+item_name = 3
+item_quantity = 10
+item_texture = ExtResource("11_5b163")
 
 [node name="Inventory_Item5" parent="Items" instance=ExtResource("10_03lf6")]
 position = Vector2(404, 244)
+item_name = 4
+item_quantity = 10
+item_texture = ExtResource("11_5b163")
 
 [node name="Inventory_Item6" parent="Items" instance=ExtResource("10_03lf6")]
 position = Vector2(427, 244)
+item_name = 5
+item_quantity = 10
+item_texture = ExtResource("11_5b163")
 
 [node name="Inventory_Item7" parent="Items" instance=ExtResource("10_03lf6")]
 position = Vector2(450, 244)
+item_name = 6
+item_quantity = 10
+item_texture = ExtResource("11_5b163")
 
 [node name="Inventory_Item8" parent="Items" instance=ExtResource("10_03lf6")]
 position = Vector2(335, 267)
+item_name = 7
+item_quantity = 10
+item_texture = ExtResource("11_5b163")
 
 [node name="Inventory_Item9" parent="Items" instance=ExtResource("10_03lf6")]
 position = Vector2(358, 267)
+item_name = 8
+item_quantity = 10
+item_texture = ExtResource("11_5b163")
 
 [node name="Inventory_Item10" parent="Items" instance=ExtResource("10_03lf6")]
 position = Vector2(381, 267)
+item_name = 9
+item_quantity = 10
+item_texture = ExtResource("11_5b163")
 
 [node name="Inventory_Item11" parent="Items" instance=ExtResource("10_03lf6")]
 position = Vector2(404, 267)
+item_name = 10
+item_quantity = 10
+item_texture = ExtResource("11_5b163")
 
 [node name="Inventory_Item12" parent="Items" instance=ExtResource("10_03lf6")]
 position = Vector2(427, 267)
+item_name = 11
+item_quantity = 10
+item_texture = ExtResource("11_5b163")
 
 [node name="Inventory_Item13" parent="Items" instance=ExtResource("10_03lf6")]
 position = Vector2(450, 267)
+item_name = 12
+item_quantity = 10
+item_texture = ExtResource("11_5b163")
 
 [node name="GameSoundtrack" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("12_sqey7")
 volume_db = -8.842
+autoplay = true
 
 [node name="CropSounds" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("13_tqfpm")
+stream = ExtResource("13_dinmo")

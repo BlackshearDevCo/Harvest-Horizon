@@ -12,12 +12,13 @@ func _ready():
 	_on_inventory_updated()
 	_on_inventory_index_updated()
 	
+	
 func _on_inventory_index_updated():
 	var slots = grid_container.get_children()
 	for index in range(slots.size()):
-		var slot = grid_container.get_child(index).get_child(1)
+		var slot = grid_container.get_child(index).get_child(0)
 		if (index == Global.inventory_index):
-			slot.region_rect = selected_slot_region
+			slot.region_rect = selected_slot_region	
 		else:
 			slot.region_rect = slot_region
 
@@ -36,3 +37,4 @@ func clear_grid_container():
 		var child = grid_container.get_child(0)
 		grid_container.remove_child(child)
 		child.queue_free()
+		

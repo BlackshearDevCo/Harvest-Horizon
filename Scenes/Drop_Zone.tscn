@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://chnm7hncyscj5"]
+
+[sub_resource type="GDScript" id="GDScript_e4gtg"]
+script/source = "extends Node2D
+
+
+func _draw():
+	draw_circle(Vector2.ZERO, 150, Color.TRANSPARENT)
+	
+func select():
+	for child in get_tree().get_nodes_in_group(\"zone\"):
+		child.deselect()
+	modulate = Color.AQUA
+	
+func deselect():
+	modulate = Color.WHITE
+"
+
+[node name="DropZone" type="Node2D" groups=["zone"]]
+script = SubResource("GDScript_e4gtg")

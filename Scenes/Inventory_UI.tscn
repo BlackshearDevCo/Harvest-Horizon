@@ -12,7 +12,7 @@ grow_vertical = 2
 script = ExtResource("1_c1lu3")
 
 [node name="GridContainer" type="GridContainer" parent="."]
-custom_minimum_size = Vector2(800, 400)
+custom_minimum_size = Vector2(800, 600)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -20,9 +20,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -691.0
-offset_top = -229.0
+offset_top = -190.0
 offset_right = 691.0
-offset_bottom = 229.0
+offset_bottom = 410.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 9

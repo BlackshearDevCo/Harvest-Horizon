@@ -1,55 +1,22 @@
-#@tool
-extends Node2D
+extends Resource
 
-var scene_path: String = "res://Scenes/Inventory_Item.tscn"
+class_name InventoryItem
 
+@export var item: Item
+@export var quantity: int
 
-@export var item_type: Global.ItemTypes
-@export var item_name: Global.ItemNames
-@export var item_texture: Texture
-@export var item_texture_reigon: Rect2
+func _init(item: Item, quantity: int = 1):
+	self.item = item
+	self.quantity = quantity
 
-@onready var icon_sprite = $Sprite2D
+func add_quantity(amount: int):
+	self.quantity += amount
 
-var player_in_range = false;
+func remove_quantity(amount: int):
+	self.quantity = max(0, self.quantity - amount)
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	# Set texture reigon in tileset
-	icon_sprite.region_rect = Global.item_reigons[item_name][item_type]
-	item_texture_reigon  = Global.item_reigons[item_name][item_type]
-	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if player_in_range and Input.is_action_just_pressed("interact"):
-		pickup_item()
-
-
-func pickup_item():
-	var item = {
-		"quantity": 1,
-		"type": item_type,
-		"name": item_name,
-		"texture": item_texture,
-		"scene_path": scene_path,
-		"texture_reigon": item_texture_reigon,
+func to_dict() -> Dictionary:
+	return {
+		"item": item.to_dict(),
+		"quantity": quantity,
 	}
-	
-	if Global.player_node:
-		Global.add_item(item)
-		self.queue_free()
-
-
-func _on_area_2d_body_entered(body):
-	if body.is_in_group("Player"):
-		player_in_range = true
-		body.interact_ui.visible = true
-		self.scale = Vector2(1.1, 1.1)
-
-
-func _on_area_2d_body_exited(body):
-	if body.is_in_group("Player"):
-		player_in_range = false
-		body.interact_ui.visible = false
-		self.scale = Vector2(1, 1)

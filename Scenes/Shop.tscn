@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=3 uid="uid://hxx1rgnr46un"]
+
+[ext_resource type="Script" path="res://Scripts/Shop.gd" id="1_aer62"]
+[ext_resource type="TileSet" uid="uid://8mndl2qy818o" path="res://Resources/tilesets/ground_tiles.tres" id="1_t1v3w"]
+[ext_resource type="Texture2D" uid="uid://86v2qhkluqib" path="res://Assests/ui/Sprite sheet for Basic Pack.png" id="3_apdnw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a7fwg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_shoo7"]
+size = Vector2(75, 72)
+
+[node name="Shop" type="Node2D"]
+script = ExtResource("1_aer62")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_t1v3w")
+format = 2
+layer_0/name = "Floor"
+layer_0/tile_data = PackedInt32Array(131073, 65571, 1, 131074, 65571, 1, 196610, 65571, 1, 131075, 65571, 1, 196611, 65571, 1, 131076, 65571, 1, 196609, 65571, 1, 262146, 65571, 1, 262147, 65571, 1, 196612, 65571, 1)
+layer_1/name = "Walls"
+layer_1/tile_data = PackedInt32Array(65536, 35, 0, 131072, 35, 1, 196608, 35, 1, 65541, 131107, 0, 131077, 131107, 1, 196613, 131107, 1, 262144, 35, 2, 65537, 65571, 0, 262145, 65571, 2, 65538, 65571, 0, 262146, 327717, 0, 65539, 65571, 0, 262147, 196643, 2, 65540, 65571, 0, 262148, 65571, 2, 262149, 131107, 2)
+layer_2/name = "Roof"
+layer_2/tile_data = PackedInt32Array(0, 36, 0, 65536, 36, 1, 131072, 36, 2, 196608, 36, 3, 1, 65572, 0, 65537, 65572, 1, 131073, 65572, 2, 196609, 65572, 3, 2, 65572, 0, 65538, 65572, 1, 131074, 65572, 2, 196610, 65572, 3, 3, 65572, 0, 65539, 65572, 1, 131075, 65572, 2, 196611, 65572, 3, 4, 65572, 0, 65540, 65572, 1, 131076, 327716, 0, 196612, 65572, 3, 5, 131108, 0, 65541, 131108, 1, 131077, 131108, 2, 196613, 131108, 3, 262144, 36, 4, 262145, 65572, 4, 262146, 65572, 4, 262147, 65572, 4, 262148, 65572, 4, 262149, 131108, 4)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(39, 81)
+shape = SubResource("CircleShape2D_a7fwg")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(47.5, 45)
+shape = SubResource("RectangleShape2D_shoo7")
+
+[node name="SignUI" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 31.0
+offset_bottom = 30.0
+
+[node name="Sign" type="NinePatchRect" parent="SignUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 33.5
+offset_top = 51.0
+offset_right = 60.5
+offset_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_apdnw")
+region_rect = Rect2(455, 139, 30, 28)
+patch_margin_left = 7
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 5
+
+[node name="Icon" type="NinePatchRect" parent="SignUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 42.5
+offset_top = 57.0
+offset_right = 54.5
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_apdnw")
+region_rect = Rect2(867, 209, 10, 14)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

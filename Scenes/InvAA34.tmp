@@ -28,7 +28,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_81otb")
 
-[node name="Frame" type="NinePatchRect" parent="."]
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Frame" type="NinePatchRect" parent="Control"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 0
 offset_right = 150.0
@@ -36,19 +41,19 @@ offset_bottom = 150.0
 texture = ExtResource("2_8g45l")
 region_rect = Rect2(59, 59, 26, 26)
 
-[node name="Control" type="Control" parent="Frame"]
+[node name="Control" type="Control" parent="Control/Frame"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ItemIcon" type="Sprite2D" parent="Frame/Control"]
+[node name="ItemIcon" type="Sprite2D" parent="Control/Frame/Control"]
 position = Vector2(75, 75)
 scale = Vector2(4.5, 4.5)
 texture = ExtResource("2_6hoip")
 region_enabled = true
 region_rect = Rect2(0, 32, 16, 16)
 
-[node name="ItemQuantity" type="Label" parent="Frame/Control"]
+[node name="ItemQuantity" type="Label" parent="Control/Frame/Control"]
 layout_mode = 0
 offset_left = 95.0
 offset_top = 85.0
@@ -59,8 +64,8 @@ theme_override_fonts/font = ExtResource("4_htmse")
 theme_override_font_sizes/font_size = 40
 text = "1"
 
-[node name="ItemButton" type="Button" parent="."]
-modulate = Color(1, 1, 1, 0)
+[node name="ItemButton" type="Button" parent="Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -69,12 +74,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_uimj6")
 
-[node name="UsagePanel" type="NinePatchRect" parent="."]
+[node name="DetailsPanel" type="NinePatchRect" parent="Control"]
 visible = false
-clip_contents = true
 layout_mode = 0
 offset_top = -85.0
-offset_right = 375.0
+offset_right = 240.0
 offset_bottom = -5.0
 texture = ExtResource("2_8g45l")
 region_rect = Rect2(153, 9, 30, 30)
@@ -83,7 +87,48 @@ patch_margin_top = 7
 patch_margin_right = 7
 patch_margin_bottom = 7
 
-[node name="NinePatchRect" type="NinePatchRect" parent="UsagePanel"]
+[node name="Item Name" type="Label" parent="Control/DetailsPanel"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 11.0
+offset_right = 102.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(0.207843, 0.215686, 0.219608, 1)
+theme_override_fonts/font = ExtResource("4_htmse")
+theme_override_font_sizes/font_size = 30
+text = "Name"
+
+[node name="Item Type" type="Label" parent="Control/DetailsPanel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 15.0
+offset_top = 4.0
+offset_right = 75.0
+offset_bottom = 34.0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.329412, 0.34902, 0.34902, 1)
+theme_override_fonts/font = ExtResource("4_htmse")
+theme_override_font_sizes/font_size = 26
+text = "Type
+"
+
+[node name="UsagePanel" type="NinePatchRect" parent="Control"]
+visible = false
+clip_contents = true
+layout_mode = 0
+offset_top = -85.0
+offset_right = 240.0
+offset_bottom = -5.0
+texture = ExtResource("2_8g45l")
+region_rect = Rect2(153, 9, 30, 30)
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/UsagePanel"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 14
@@ -99,8 +144,7 @@ grow_vertical = 2
 texture = ExtResource("5_xkmk2")
 region_rect = Rect2(99, 4, 90, 25)
 
-[node name="AssignButton" type="Button" parent="UsagePanel/NinePatchRect"]
-modulate = Color(1, 1, 1, 0)
+[node name="DropButton" type="Button" parent="Control/UsagePanel/NinePatchRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -110,28 +154,16 @@ grow_vertical = 2
 theme = SubResource("Theme_emqy8")
 theme_override_fonts/font = ExtResource("4_htmse")
 theme_override_font_sizes/font_size = 40
+text = "Drop"
 
-[node name="Label" type="Label" parent="UsagePanel/NinePatchRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_htmse")
-theme_override_font_sizes/font_size = 30
-text = "Assign to Hotbar"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Area2D" type="Area2D" parent="Control"]
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Area2D"]
 position = Vector2(75, 75)
 shape = SubResource("RectangleShape2D_c7ii7")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
-[connection signal="pressed" from="ItemButton" to="." method="_on_item_button_pressed"]
-[connection signal="pressed" from="UsagePanel/NinePatchRect/AssignButton" to="." method="_on_assign_button_pressed"]
-[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Control/ItemButton" to="." method="_on_item_button_mouse_entered"]
+[connection signal="mouse_exited" from="Control/ItemButton" to="." method="_on_item_button_mouse_exited"]
+[connection signal="pressed" from="Control/ItemButton" to="." method="_on_item_button_pressed"]
+[connection signal="input_event" from="Control/Area2D" to="." method="_on_area_2d_input_event"]
